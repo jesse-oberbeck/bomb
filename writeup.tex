@@ -19,6 +19,11 @@
     \textbf{Project Goals:}
 
     We were presented with a binary called bomb, which runs in stages. Our task is to diffuse the bomb, or to get as close to said goal as possible.
+
+    \bigskip
+
+    As a note: all references to gdb and registers will be lower case, as this is what I observed in the course materials.
+
     \bigskip
 
     \textbf{Considerations:}
@@ -103,22 +108,22 @@
     rcx is set to 9 after repnz via not.
     one us subtracted, so a jump if equal (je) is skipped.
     moves username pointer to rax.
-    a single byte of rax is moved to edx.
-    the value at rcx (9) is compared to 0x19, and a jump if above is skipped.
-    a jump occurs based on the number in rcx.
-    the pointer to username is moved to the next character.
+    A single byte of rax is moved to edx.
+    The value at rcx (9) is compared to 0x19, and a jump if above is skipped.
+    A jump occurs based on the number in rcx.
+    The pointer to username is moved to the next character.
     schoenw is compared to rdi, which is... null.
-    jump to stage\_5\+110 is executed.
-    another jump based on rcx occurs.
+    Jump to stage\_5\+110 is executed.
+    Another jump based on rcx occurs.
     j is added to s.
     edx is subtracted from a value past the stack pointer.
-    a jump to stage\_5\+198 is done.
+    A jump to stage\_5\+198 is done.
     rax is moved over again. "choenw".
-    jump back to \+110
+    Jump back to \+110
     
     "QT\_ACCESSIBILITY=1"... wat?
     
-    loops over each letter in the username, jumping to a location in the function based on said letter. in each letter based section of code, at which point varied maths happen...
+    The stage loops over each letter in the username, jumping to a location in the function based on said letter, with a manner of one-line arithmetic jump table.. In each letter based section of code, at which point varied maths happen...
     
     I've decided to try skipping the middle portion, as it is a ton to track, and see how varying input affects stage\_5\+207, which I believe to be the final compare.
     j 500 s ends at -557
@@ -182,6 +187,6 @@ It seems the gibberish at the relative address is equivalent to zero.
 
     \textbf{Conclusion:}
 
-    The project was seemingly equal parts a test of assembly literacy, and ability to effectively use tools. Mainly GDB. I had a good deal of difficulty interpreting the actions of the code into something more understandable, such as trying to decompile it back to C manually. Stage 4 took me a great deal of time to finally figure out because I was having a hard time following the loop it goes through. Ultimately I ran out of time, and relied on luck to get a couple of them done within the time frame given (stages 6 and 7 were largely luck, for me I think).
+    The project was seemingly equal parts a test of assembly literacy, and ability to effectively use tools. Mainly gdb. I had a good deal of difficulty interpreting the actions of the code into something more understandable, such as trying to decompile it back to C manually. Stage 4 took me a great deal of time to finally figure out because I was having a hard time following the loop it goes through. Ultimately I ran out of time, and relied on luck to get a couple of them done within the time frame given (stages 6 and 7 were largely luck, for me I think).
     Over all I would say it was a good learning experience, though very time consuming. I spent more time miserable than triumphant by far.
 \end{document}
