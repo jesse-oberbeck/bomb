@@ -36,6 +36,9 @@
 
     \bigskip
 	Used "strings" on compiled binary. A few strings stood out, including indication of possible hidden stages, some of the library functions used, and "swordfish," which turned out to be the stage 1 answer/password.
+
+    \bigskip
+
 	Answer: swordfish
 
     \bigskip
@@ -45,6 +48,9 @@
     \bigskip
 
 	The stage2 function calls getenv, and USER is present in strings. Entered my username, and progressed.
+
+    \bigskip
+
 	Answer: jschoenw
 
     \bigskip
@@ -65,6 +71,9 @@
     Rax is shifted right by 2, yeilding 237.
     This is multiplied by aaaaaaab.
     rbx is compared to rdx, followed by setb (set byte if below).
+
+    \bigskip
+
     Answer: put in a big number and win. 12345.
 
     \bigskip
@@ -76,6 +85,9 @@
     (A lot of trial and error here was not documented, largely due to being too focused on my own failure and frustration. Initially I was assuming every letter in the username was relevent to the answer, and trying to interpret the code as such. Things went much better once I set this idea aside.)
     Avoided the first jump (jne) by setting eax to 5. This seems to be the number of arguments expected (also the format string is "\%u \%u \%u \%u \%u"). ebx is set to the first letter of the previously saved off user name string, so "j". the numeric value of j is compared to the first argument, continuing if the argument is greater. A loop is started that checks if the current argument is greater than the sum of all arguments thus far, until the last argument.
     The last argument, the sum of all previous\+ has to be evenly divisible by the length of the user's name.
+
+    \bigskip
+
     Answer: 107 214 428 856 1713
 
     \bigskip
@@ -114,6 +126,8 @@
     j 1057 s ends at 0
     This causes it to successfully pass.
 
+    \bigskip
+
     Answer: j 1057 s
 
     \bigskip
@@ -133,6 +147,8 @@
     sete is called.
     done.
 
+    \bigskip
+
     Answer: 53 j 53
 
     \bigskip
@@ -150,7 +166,10 @@ So, RDI is null.
 The second jump is hit. rdx is equal to rdx. shocking.
 compare a rip relative address to rcx, which is 0.
 It seems the gibberish at the relative address is equivalent to zero.
-Answer: NULL
+
+    \bigskip
+
+    Answer: NULL
 
     \bigskip
 
@@ -159,6 +178,7 @@ Answer: NULL
 
     There are many. Following the code into system or function calls that take forever to get out of, misinterpreting a value (char vs int, etc) or focusing too hard on portions of the code that have no effect on outcome, such as the stack cookie/canary portions, or the repeated chunk that serves as strlen.
 
+    \bigskip
 
     \textbf{Conclusion:}
 
